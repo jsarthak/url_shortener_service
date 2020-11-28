@@ -1,0 +1,24 @@
+const express = require("express");
+const router = express.Router();
+
+const URL = require("../models/url");
+
+// @route      GET /:code
+// @desc       Redirect to long/original URL
+router.get("/:code", async (req, res) => {
+  try {
+    let url = await URL.findOne({ urlCode: req.params.code });
+    if (url) {
+      url.visits++;
+      url.save();
+      return res.redirect(url.longUrl);
+    } else {
+      return res.status(404).json("No URL found");
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json("Server error");
+  }
+});
+
+module.exports = router;
