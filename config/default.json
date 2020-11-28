@@ -1,4 +1,4 @@
 {
     "mongoURI": "mongodb+srv://dbUser:vSRoMde3f4XYMLaI@cluster0.vgfkl.mongodb.net/urlDB?retryWrites=true&w=majority",
-    "baseURL": "http://localhost:5000"
+    "baseURL": "https://url-shortener-service.vercel.app/"
 }
